@@ -16,7 +16,7 @@ Laravel Stores API is a RESTful API built with Laravel framework to manage store
    git clone https://github.com/TanTruong24/php-laravel.git
 2. **Navigate to the project directory**
     ```bash
-    cd laravel-stores-api
+    cd php-laravel
 3. **Install Composer dependencies:**
     ```bash
     composer install
