@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Hash;
 
 class UserService {
     private $userRepository;
@@ -11,7 +12,27 @@ class UserService {
         $this->userRepository = $userRepository;
     }
 
-    public function getUserById($id) {
-        return $this->userRepository->getUserById($id);
+    public function getAll() {
+        return $this->userRepository->getAll();
+    }
+
+    public function getById($id) {
+        return $this->userRepository->getById($id);
+    }
+
+    public function create(array $data) {
+        $data['password'] = Hash::make($data['password']);
+        return $this->userRepository->create($data);
+    }
+
+    public function update($id, $data) {
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
+        return $this->userRepository->update($id, $data);
+    }
+
+    public function delete($id) {
+        return $this->userRepository->delete($id);
     }
 }

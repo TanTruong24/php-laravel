@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::controller(UserController::class) ->group(function () {
+    Route::get('/users', 'index');
+    Route::get('/users/{id}',  'show');
+    Route::post('/users', 'create');
+    Route::put('/users/{id}',  'update');
+    Route::delete('/users/{id}', 'delete');
+});
 
-Route::get('/users/{id}', [UserController::class, 'show']);
